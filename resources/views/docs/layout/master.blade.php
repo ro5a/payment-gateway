@@ -281,7 +281,8 @@
 <script src="{{url('assets/web/js/doc.js')}}"></script>
 <script src="{{url('assets/web/js/swiper-bundle.min.js')}}"></script>
 <!--custom js file link-->
-<script src="{{url('assets/web/js/main.js')}}"></script>
+
+
 </body>
 
 
