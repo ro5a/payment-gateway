@@ -18,6 +18,7 @@ use App\Models\Role;
 use Illuminate\Support\Str;
 use Mail;
 
+
 class UserController extends Controller
 {
     use general_trait;
@@ -360,5 +361,16 @@ class UserController extends Controller
      
         return $random_string;
     }
+    public function profile(){
+        // $user = User::find(1)->user()->where('first_name', $user);
+        // $user_id = Auth::user()->find(id);
+    	// return view('website.user_profile.settings', $user_id );
+        $userId = Auth::id();
+
+          dd($userId);
+       // $user = User::with(['users'])->find($id);
+    	// return view('website.user_profile.settings', $user );
+    }
+   
     
 }

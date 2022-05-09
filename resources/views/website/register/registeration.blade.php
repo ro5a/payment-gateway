@@ -59,9 +59,9 @@
                     </fieldset>
                 </div>
                 <div class="mt-30" data-v-e9c818fa="">
-                    <button type="submit" type="button" id="register_btn" disabled="disabled" class=" col-4 p-1 up-btn  rounded-3 m-auto  up-btn-primary width-md up-btn-block" data-v-e9c818fa="">انشاء حساب </button>
-                    <p class="mb-0 mt-3 mb-2" data-v-e9c818fa="">Already have an account? <a href="{{ route('login') }}" data-v-e9c818fa="">
-          Log In
+                    <button type="submit" type="button" id="register_btn" disabled="disabled" class=" col-4 p-1 up-btn  rounded-3 m-auto  btn btn-success width-md up-btn-block" data-v-e9c818fa="">انشاء حساب </button>
+                    <p class="mb-0 mt-3 mb-2" data-v-e9c818fa="">هل لديك حساب؟  <a href="{{ route('login') }}" data-v-e9c818fa="">
+        تسجيل الدخول
         </a></p>
                 </div>
             </div>

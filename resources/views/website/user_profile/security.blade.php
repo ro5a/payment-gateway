@@ -15,6 +15,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <!--custom css file link-->
     <link rel="stylesheet" href="{{url('assets/web/css/style.css')}}">
+    <link rel="stylesheet" href="{{url('assets/web/css/user_profile.css')}}">
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
@@ -72,17 +74,33 @@
                     </div>
                     <h5 class="modal-title fs-3 fw-bold text-center">غير كلمة المرور الخاصة بك</h5>
                     <div class="modal-body">
-                        <form action="">
+                        <form action="{{ route('update-password') }}" method="POST">
+                            @csrf
+                            @if (session('status'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('status') }}
+                            </div>
+                        @elseif (session('error'))
+                            <div class="alert alert-danger" role="alert">
+                                {{ session('error') }}
+                            </div>
+                        @endif
                             <div class="col-6">
                                 <label for="exampleFormControlInput1" class="form-label fs-3">قم بتأكيد كلمة مرورك الحالية</label>
-                                <input type="password" class="form-control w-100 p-4 fs-3" id="exampleFormControlInput1" placeholder="كلمة السر الحالية">
+                                <input type="password" class="form-control w-100 p-4 fs-3 @error('old_password') is-invalid @enderror" id="oldPasswordInput" name="old_password" placeholder="كلمة السر الحالية">
+                                @error('old_password')
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
                               </div>
                               <div class="col-6">
                                 <label for="exampleFormControlInput1" class="form-label fs-3">أدخل كلمة المرور الجديدة (حافظ على أمان حسابك. لا تستخدم اسمك.)</label>
-                                <input type="password" class="form-control  p-4 fs-3" id="exampleFormControlInput1" placeholder="كلمة سر جديدة">
+                                <input type="password" class="form-control  p-4 fs-3 @error('new_password') is-invalid @enderror" id="newPasswordInput" name="new_password"  placeholder="كلمة سر جديدة">
+                                @error('new_password')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                               </div>
                               <div class="col-6 mt-4">
-                                <input type="password" class="form-control  p-4 fs-3" id="exampleFormControlInput1" placeholder="تاكيد كلمة السر">
+                                <input type="password" class="form-control  p-4 fs-3" id="confirmNewPasswordInput"  name="new_password_confirmation" placeholder="تاكيد كلمة السر">
                               </div>
                               <div class="col-6">
                                 <button type="submit" class="btn btn-primary mb-3">تغير كلمة السر</button>

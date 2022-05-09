@@ -10,6 +10,7 @@ use App\Http\Controllers\user\UserController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -115,6 +116,13 @@ Route::get('/security', function () {
 Route::get('/privacy', function () {
     return view('website/user_profile/privacy');
 });
+/* changge password route*/
+Route::get('/change-password', [App\Http\Controllers\HomeController::class, 'changePassword'])->name('change-password');
+Route::post('/change-password', [App\Http\Controllers\HomeController::class, 'updatePassword'])->name('update-password');
+
+//update profile
+Route::get('/profile',[App\Http\Controllers\user\UserController::class,'profile'] )->name('settings');
+Route::get('/auth',[App\Http\Controllers\HomeController::class,'Autguser'] )->name('auth');
 
 
 
